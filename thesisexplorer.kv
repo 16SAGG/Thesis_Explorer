@@ -1,0 +1,84 @@
+#:kivy 2.1.0
+#:import ScrollEffect  kivy.effects.scroll.ScrollEffect
+
+<SideBar@MDBoxLayout>:
+    id: SideBar
+    orientation:'vertical'
+    spaccing: '24px'
+    padding: '12px'
+    size_hint: (.176, 1)
+    canvas.before:
+        Color:
+            rgba: app.theme_cls.primary_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    MDIconButton:
+        icon: "android"
+        icon_size: "64sp"
+        height: '48px'
+        size_hint_x: 1
+        pos_hint: {"center_x": .5, "center_y": .5}
+    ScrollView:
+        effect_cls: ScrollEffect
+        MDList:
+            OneLineIconListItem:
+                text : 'Inicio'
+                radius: 5
+                divider_color: (0,0,0,0)
+                IconLeftWidgetWithoutTouch:
+                    icon: 'android'
+            OneLineIconListItem:
+                text : 'Buscar'
+                radius: 5
+                divider_color: (0,0,0,0)
+                IconLeftWidgetWithoutTouch:
+                    icon: 'android'
+            OneLineIconListItem: #Space between elements
+                divider_color: (0,0,0,0)
+                height: '24px'
+                disabled: True
+            OneLineIconListItem:
+                text : 'Por Carrera'
+                radius: 5
+                divider_color: (0,0,0,0)
+                IconLeftWidgetWithoutTouch:
+                    icon: 'android'
+            OneLineIconListItem:
+                text : 'Por Año'
+                radius: 5
+                divider_color: (0,0,0,0)
+                IconLeftWidgetWithoutTouch:
+                    icon: 'android'
+            OneLineIconListItem:
+                text : 'Por Tutor'
+                radius: 5
+                divider_color: (0,0,0,0)
+                IconLeftWidgetWithoutTouch:
+                    icon: 'android'
+            OneLineIconListItem:
+                text : 'Por Autor'
+                radius: 5
+                divider_color: (0,0,0,0)
+                IconLeftWidgetWithoutTouch:
+                    icon: 'android'
+            
+ScreenManager:
+    MainScreen:
+    SearchScreen:
+
+<MainScreen>:
+    name: "main"
+    MDBoxLayout:
+        orientation: 'horizontal'
+        SideBar:
+        MDBoxLayout:
+            orientation:'vertical'
+            size_hint: (.824, 1)
+
+<SearchScreen>:
+    name: "search"
+    MDRectangleFlatButton:
+        text: 'Go to Main'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        on_press: root.manager.current = 'main'
